@@ -32,7 +32,6 @@ pair<string, map<string, char>> BytePairEncoding(string compressedXML) {
             pairFrequency[pair]++;
         }
 
-
         // Most repeated pair
         mostPair = "";
         max = 1;
