@@ -3,6 +3,8 @@
 #include "..\\header\\XMLtoJSON.h"
 #include "..\\header\\CompressingXML.h"
 #include "..\\header\\NetworkBuilder.h"
+#include "..\\header\\MinifyingXMLFile.h"
+
 
 using namespace std;
 
@@ -17,6 +19,17 @@ int main()
 {
     string xmlfile = readFile("..\\..\\input\\sample.xml");
     Checkxmlfile(xmlfile);
+    string minifiedXML = Minifyingxmlfile(xmlfile);
+    cout << "Minified XML:\n" << minifiedXML << endl;
+    
+    //Checkxmlfile(xmlfile);
+    string s = CompressingXMLFile(xmlfile);
+    auto e = BytePairEncoding(s);
+    cout << "Removed Spaces :\n\n" << s <<endl<<endl;
+    cout << "Byte Pair :\n\n" << e.first <<endl<<endl;
+    ofstream outFile("compresed_file.xml");
+    outFile << e.first;
+    outFile.close();
     
     //Checkxmlfile(xmlfile);
     string s = CompressingXMLFile(xmlfile);
