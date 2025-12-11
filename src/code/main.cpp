@@ -2,6 +2,7 @@
 #include "..\\header\\CheckXmlFile.h"
 #include "..\\header\\XMLtoJSON.h"
 #include "..\\header\\CompressingXML.h"
+#include "..\\header\\DecompressingXML.h"
 #include "..\\header\\NetworkBuilder.h"
 #include "..\\header\\MinifyingXMLFile.h"
 #include "..\\header\\XMLtoTree.h"
@@ -51,7 +52,16 @@ int main()
     outFile << e.first;
     outFile.close();
     cout << "-----------------------------------\n\n";
-    
+
+    // 4. Decompressing XML File
+    string decompressed = DecompressingXMLFile(e.first, e.second);
+
+    cout << "Decompressed XML :\n\n" << decompressed << endl<<endl;
+
+    ofstream outFile2("decompressed_file.xml");
+    outFile2 << decompressed;
+    outFile2.close();
+    cout << "-----------------------------------\n\n";
 
 }
 

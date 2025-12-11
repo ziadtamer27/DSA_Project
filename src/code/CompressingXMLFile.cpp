@@ -65,10 +65,10 @@ pair<string, map<unsigned char, string>> BytePairEncoding(string compressedXML) 
         //cout<<mostPair<<" "<<max<<endl;
         
         // Replace 
-        string compressedXML_new;
-        for (size_t i = 0; i < compressedXML.length(); i++) {
-            if (i + 1 < compressedXML.length() && compressedXML[i] == mostPair[0] && compressedXML[i + 1] == mostPair[1]) {
-                compressedXML_new += static_cast<char>(replace);
+        string compressedXML_new = "";
+        for (int i = 0; i < compressedXML.length()-1; i++) {
+            if (compressedXML[i] == mostPair[0] && compressedXML[i + 1] == mostPair[1]) {
+                compressedXML_new += replace;
                 i++;
             } else {
                 compressedXML_new += compressedXML[i];
