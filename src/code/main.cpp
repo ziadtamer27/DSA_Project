@@ -2,6 +2,7 @@
 #include "..\\header\\CheckXmlFile.h"
 #include "..\\header\\XMLtoJSON.h"
 #include "..\\header\\CompressingXML.h"
+#include "..\\header\\NetworkBuilder.h"
 
 using namespace std;
 

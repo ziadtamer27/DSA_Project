@@ -9,7 +9,6 @@ void Checkxmlfile(string xmlfile){
     for(int i=0;i<xmlfile.size();i++){
         if(xmlfile[i]=='\n') line++;
 
-        // Closing tag
         if(xmlfile[i]=='<' && xmlfile[i+1]=='/'){
             i+=2;
             string temp="";
