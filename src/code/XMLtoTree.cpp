@@ -1,7 +1,5 @@
 #include "..\\header\\XMLtoTree.h"
 
-
-
 Node* XMLtoTree(string xmlfile){
     Node* root = nullptr;
     stack<Node*> nodeStack;
@@ -46,6 +44,7 @@ Node* XMLtoTree(string xmlfile){
             }
         }
     }
+    return root;
 }
 
 void printTree(Node* node, int depth = 0) {

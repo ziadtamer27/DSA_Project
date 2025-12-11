@@ -33,7 +33,7 @@ int main()
     
     // 2. Converting XML to Tree Structure
     Node* root = XMLtoTree(xmlfile);
-    printTree(root);
+    printTree(root,0);
     cout << "-----------------------------------\n\n";
     
     // 3. Checking XML File
