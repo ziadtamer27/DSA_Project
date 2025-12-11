@@ -18,8 +18,6 @@ string CompressingXMLFile(string xmlfile){
 
 pair<string, map<string, char>> BytePairEncoding(string compressedXML) {
     map<string, char> pairToSymbol;
-string BytePairEncoding(string compressedXML) {
-    map<string, char> pairToSymbol; 
     char replace = 128; 
     string mostPair =" ";
     int max = 0;
@@ -33,7 +31,6 @@ string BytePairEncoding(string compressedXML) {
             pair += compressedXML[i + 1];
             pairFrequency[pair]++;
         }
-
 
         // Most repeated pair
         mostPair = "";
@@ -64,4 +61,3 @@ string BytePairEncoding(string compressedXML) {
     
     return make_pair(compressedXML, pairToSymbol);
 }
-
