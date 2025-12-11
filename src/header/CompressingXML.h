@@ -1,4 +1,4 @@
 #include <bits/stdc++.h>
 using namespace std;
 string CompressingXMLFile(string xmlfile);
-string BytePairEncoding(string compressedXML);
+pair<string, map<string, char>> BytePairEncoding(string compressedXML);
