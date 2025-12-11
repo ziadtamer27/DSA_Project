@@ -15,6 +15,8 @@ string readFile(const string& path) {
 int main()
 {
     string xmlfile = readFile("..\\..\\input\\sample.xml");
+    Checkxmlfile(xmlfile);
+    
     //Checkxmlfile(xmlfile);
     string s = CompressingXMLFile(xmlfile);
     auto e = BytePairEncoding(s);
