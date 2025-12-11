@@ -17,7 +17,7 @@ string CompressingXMLFile(string xmlfile){
 }
 
 string BytePairEncoding(string compressedXML) {
-    map<string, char> pairToSymbol;
+    map<string, char> pairToSymbol; 
     char replace = 128; 
     string mostPair =" ";
     int max = 0;
