@@ -1,31 +1,52 @@
 #include "..\\header\\CompressingXML.h"
 string CompressingXMLFile(string xmlfile){
-    string compressedXML;
-    for (int i = 0; i < xmlfile.length(); i++) {
+    string compressedXML = "";
+    bool tag = false;
+    for (int i = 0; i < xmlfile.length(); ++i) {
         if (xmlfile[i] == '<') {
+            tag = true;
             compressedXML += xmlfile[i];
-        } else if (xmlfile[i] == '>') {
-            compressedXML += xmlfile[i];
-        } else if (xmlfile[i] == ' ' || xmlfile[i] == '\n' || xmlfile[i] == '\t') {
             continue;
-        } else {
+        }
+        if (xmlfile[i] == '>') {
+            tag = false;
+            compressedXML += xmlfile[i];
+            continue;
+        }
+
+        if (tag) {
+            compressedXML += xmlfile[i];
+            continue;
+        }
+
+        // Outside tag or between tags
+        if (xmlfile[i] == ' ' || xmlfile[i] == '\t' || xmlfile[i] == '\n') {
+            int j = i;
+            while (j + 1 < xmlfile.length() && (xmlfile[j + 1] == ' ' || xmlfile[j + 1] == '\t')) j++;
+
+            if (xmlfile[j + 1] == '<') i = j; //skip
+                
+            else if (compressedXML.back() != '>') compressedXML += ' ';
+        }
+
+        // Not Tag or Space or \n 
+        else {
             compressedXML += xmlfile[i];
         }
     }
-    // cout << compressedXML << endl;
     return compressedXML;
 }
 
-pair<string, map<string, char>> BytePairEncoding(string compressedXML) {
-    map<string, char> pairToSymbol;
-    char replace = 128; 
+pair<string, map<unsigned char, string>> BytePairEncoding(string compressedXML) {
+    map<unsigned char, string> pairToSymbol;
+    unsigned char replace = 128; 
     string mostPair =" ";
     int max = 0;
-    while(!(mostPair.empty() || max == 1)) {
+    while(!(mostPair.empty() || max == 1) && replace < 255) {
         
         // Frequency Map
         map<string, int> pairFrequency;
-        for (int i = 0; i < compressedXML.length() - 1; i++) {
+        for (int i = 0; i + 1 < compressedXML.length(); i++) {
             string pair = "";
             pair += compressedXML[i];
             pair += compressedXML[i + 1];
@@ -41,11 +62,11 @@ pair<string, map<string, char>> BytePairEncoding(string compressedXML) {
                 mostPair = p.first;
             }
         }
-        cout<<mostPair<<" "<<max<<endl;
+        //cout<<mostPair<<" "<<max<<endl;
         
         // Replace 
         string compressedXML_new = "";
-        for (int i = 0; i < compressedXML.length(); i++) {
+        for (int i = 0; i < compressedXML.length()-1; i++) {
             if (compressedXML[i] == mostPair[0] && compressedXML[i + 1] == mostPair[1]) {
                 compressedXML_new += replace;
                 i++;
@@ -54,10 +75,10 @@ pair<string, map<string, char>> BytePairEncoding(string compressedXML) {
             }
         }
         
-        pairToSymbol[mostPair] = replace;
+        pairToSymbol[replace] = mostPair;
         compressedXML = compressedXML_new;
         replace++;
     }
-    
+
     return make_pair(compressedXML, pairToSymbol);
 }
