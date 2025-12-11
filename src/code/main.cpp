@@ -2,6 +2,11 @@
 #include "..\\header\\CheckXmlFile.h"
 #include "..\\header\\XMLtoJSON.h"
 #include "..\\header\\CompressingXML.h"
+#include "..\\header\\DecompressingXML.h"
+#include "..\\header\\NetworkBuilder.h"
+#include "..\\header\\MinifyingXMLFile.h"
+#include "..\\header\\XMLtoTree.h"
+
 
 using namespace std;
 
@@ -15,7 +20,27 @@ string readFile(const string& path) {
 int main()
 {
     string xmlfile = readFile("..\\..\\input\\sample.xml");
-    //Checkxmlfile(xmlfile);
+    Checkxmlfile(xmlfile);
+
+    ///////////////////////////////////////////
+    // ALL FUNCTION CALLS CAN BE TESTED HERE //
+    ///////////////////////////////////////////
+
+    // 1. Minifying XML File
+    string minifiedXML = Minifyingxmlfile(xmlfile);
+    cout << "Minified XML:\n" << minifiedXML << endl;
+    cout << "-----------------------------------\n\n";
+    
+    // 2. Converting XML to Tree Structure
+    Node* root = XMLtoTree(xmlfile);
+    printTree(root);
+    cout << "-----------------------------------\n\n";
+    
+    // 3. Checking XML File
+    Checkxmlfile(xmlfile);
+    cout << "-----------------------------------\n\n";
+    
+    // 3. Compressing XML File
     string s = CompressingXMLFile(xmlfile);
     auto e = BytePairEncoding(s);
     
@@ -26,6 +51,18 @@ int main()
     ofstream outFile("compresed_file.xml");
     outFile << e.first;
     outFile.close();
+    cout << "-----------------------------------\n\n";
+
+    // 4. Decompressing XML File
+    string decompressed = DecompressingXMLFile(e.first, e.second);
+
+    cout << "Decompressed XML :\n\n" << decompressed << endl<<endl;
+
+    ofstream outFile2("decompressed_file.xml");
+    outFile2 << decompressed;
+    outFile2.close();
+    cout << "-----------------------------------\n\n";
+
 }
 
 
