@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "..\\header\\CheckXmlFile.h"
-#include "..\\header\\CompressingXML.h"
 using namespace std;
 
 string readFile(const string& path) {
