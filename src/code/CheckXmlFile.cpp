@@ -1,6 +1,6 @@
 #include "..\\header\\CheckXmlFile.h"
 
-void Checkxmlfile(string xmlfile){
+string Checkxmlfile(string xmlfile){
     vector<string>errors;
     stack<string>st;
     bool valid=1;
@@ -16,7 +16,6 @@ void Checkxmlfile(string xmlfile){
                 temp+=xmlfile[i];
                 i++;
             }
-            cout << "Closing tag found: </" << temp << ">" << endl;
 
             if(!st.empty() && st.top()==temp) st.pop();
             else {
@@ -40,7 +39,6 @@ void Checkxmlfile(string xmlfile){
                 temp+=xmlfile[i];
                 i++;
             }
-            cout << "Opening tag found: <" << temp << ">" << endl;
 
             if(!st.empty()){
                 if(st.top()!=temp) st.push(temp);
@@ -52,15 +50,16 @@ void Checkxmlfile(string xmlfile){
             else st.push(temp);
         }
     }
-
+    string output="";
     if(st.empty() && valid)
-        cout << "XML file structure is valid.\n";
+        output="XML file structure is valid.\n";
     else {
-        cout << "XML file structure is NOT valid.\n";
-        cout << "Total errors detected: " << errCount << endl;
+        output="XML file structure is NOT valid.\n";
+        output+="Total errors detected: " + to_string(errCount) + "\n";
 
-        for (int i = 0; i < errors.size(); i++){
-            cout << "Error " << i+1 << ": " << errors[i] << endl;
+        for(const string& err : errors){
+            output+=err + "\n";
         }
     }
+    return output;
 }

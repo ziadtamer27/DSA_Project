@@ -44,7 +44,7 @@ int main()
     cout << "\n-----------------------------------\n\n";
 
     // 4. Checking XML File
-    Checkxmlfile(xmlfile);
+    cout << Checkxmlfile(xmlfile);
     cout << "-----------------------------------\n\n";
     
     // 5. Compressing XML File
