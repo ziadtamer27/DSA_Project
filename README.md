@@ -11,31 +11,36 @@ It supports XML validation, formatting, minifying, conversion to JSON, custom co
 
 ```
 .
-├── src
-│   ├── code
-│   │   ├── CheckXmlFile.cpp
-│   │   ├── CompressingXMLFile.cpp
-│   │   ├── DecompressingXMLFile.cpp
-│   │   ├── main.cpp
-│   │   ├── MinifyingXMLFile.cpp
-│   │   ├── NetworkBuilder.cpp
-│   │   ├── XMLtoJSON.cpp
-│   │   ├── XMLtoTree.cpp
-│   │   └── program.exe
-│   │
-│   └── header
-│       ├── CheckXmlFile.h
-│       ├── CompressingXML.h
-│       ├── DecompressingXML.h
-│       ├── MinifyingXMLFile.h
-│       ├── NetworkBuilder.h
-│       ├── XMLtoJSON.h
-│       └── XMLtoTree.h
+├── README.md
+├── xml_editor.exe
 │
-└── XMLfiles
-    ├── sample.xml
-    ├── compresed_file.xml
-    └── decompressed_file.xml
+├── inputXMLfiles
+│   └── sample.xml
+│
+├── outputfiles
+│   ├── compresed_file.xml
+│   ├── decompressed_file.xml
+│   └── JSON_output.json
+│
+└── src
+    ├── code
+    │   ├── CheckXmlFile.cpp
+    │   ├── CompressingXMLFile.cpp
+    │   ├── DecompressingXMLFile.cpp
+    │   ├── main.cpp
+    │   ├── MinifyingXMLFile.cpp
+    │   ├── NetworkBuilder.cpp
+    │   ├── XMLtoJSON.cpp
+    │   └── XMLtoTree.cpp
+    │
+    └── header
+        ├── CheckXmlFile.h
+        ├── CompressingXML.h
+        ├── DecompressingXML.h
+        ├── MinifyingXMLFile.h
+        ├── NetworkBuilder.h
+        ├── XMLtoJSON.h
+        └── XMLtoTree.h
 ```
 
 ---
