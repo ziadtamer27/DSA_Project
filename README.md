@@ -139,16 +139,3 @@ Located in `XMLfiles/`:
 
 ---
 
-## 👥 **Team Members**
-
-(Add your team names and IDs here.)
-
----
-
-If you want:
-
-✅ A version with badges (C++17, build status, etc.)
-✅ A shorter README
-✅ Advanced documentation (Doxygen-style)
-
-Just tell me!
