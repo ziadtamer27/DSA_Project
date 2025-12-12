@@ -20,7 +20,7 @@ string readFile(const string& path) {
 
 int main()
 {
-    string xmlfile = readFile("..\\..\\inputXMLfiles\\sample.xml");
+    string xmlfile = readFile("inputXMLfiles\\sample.xml");
 
     ///////////////////////////////////////////
     // ALL FUNCTION CALLS CAN BE TESTED HERE //
@@ -39,7 +39,7 @@ int main()
     // 3.Converting XML to JSON
     cout << "JSON Output\n" << XMLtoJSON(root);
 
-    ofstream outjson("..\\..\\outputfiles\\JSON_output.json");
+    ofstream outjson("outputfiles\\JSON_output.json");
     outjson << XMLtoJSON(root);
     outjson.close();
     cout << "\n-----------------------------------\n\n";
@@ -53,7 +53,7 @@ int main()
     auto e = BytePairEncoding(s);
     cout << "Removed Spaces :\n\n" << s <<endl<<endl;
     cout << "Byte Pair :\n\n" << e.first <<endl<<endl;
-    ofstream outFile("..\\..\\outputfiles\\compresed_file.comp");
+    ofstream outFile("outputfiles\\compresed_file.comp");
     outFile << e.first;
     outFile.close();
     cout << "-----------------------------------\n\n";
@@ -61,7 +61,7 @@ int main()
     // 6. Decompressing XML File
     string decompressed = DecompressingXMLFile(e.first, e.second);
     cout << "Decompressed XML :\n\n" << decompressed << endl<<endl;
-    ofstream outFile2("..\\..\\outputfiles\\decompressed_file.xml");
+    ofstream outFile2("outputfiles\\decompressed_file.xml");
     outFile2 << decompressed;
     outFile2.close();
     cout << "-----------------------------------\n\n";
