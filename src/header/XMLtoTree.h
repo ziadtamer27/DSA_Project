@@ -1,3 +1,6 @@
+#ifndef XMLTOTREE_H
+#define XMLTOTREE_H
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -6,6 +9,7 @@ public:
     string tag;
     string data;
     vector<Node*> children;
+    bool leaf=1;
     Node(string t) {
         tag = t;
         data = "";
@@ -17,5 +21,6 @@ public:
         children.push_back(child);
     }
 };
-void printTree(Node* node, int depth = 0);
+void printTree(Node* node,int depth);
 Node* XMLtoTree(string xmlfile);
+#endif
