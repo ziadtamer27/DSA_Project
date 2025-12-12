@@ -18,7 +18,7 @@ It supports XML validation, formatting, minifying, conversion to JSON, custom co
 │   └── sample.xml
 │
 ├── outputfiles
-│   ├── compresed_file.xml
+│   ├── compresed_file.comp
 │   ├── decompressed_file.xml
 │   └── JSON_output.json
 │
