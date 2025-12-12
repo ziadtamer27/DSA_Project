@@ -1,3 +1,6 @@
+#ifndef XMLTOTREE_H
+#define XMLTOTREE_H
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,3 +23,4 @@ public:
 };
 void printTree(Node* node,int depth);
 Node* XMLtoTree(string xmlfile);
+#endif
