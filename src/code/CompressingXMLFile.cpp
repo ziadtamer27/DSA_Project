@@ -46,7 +46,7 @@ pair<string, map<unsigned char, string>> BytePairEncoding(string compressedXML) 
         
         // Frequency Map
         map<string, int> pairFrequency;
-        for (int i = 0; i + 1 < compressedXML.length(); i++) {
+        for (int i = 0; i < compressedXML.length()-1; i++) {
             string pair = "";
             pair += compressedXML[i];
             pair += compressedXML[i + 1];
