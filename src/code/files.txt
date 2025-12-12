@@ -1,7 +1,0 @@
-CheckXmlFile.cpp
-MinifyingXMLFile.cpp
-XMLtoTree.cpp
-XMLtoJSON.cpp
-CompressingXMLFile.cpp
-DecompressingXMLFile.cpp
-main.cpp
