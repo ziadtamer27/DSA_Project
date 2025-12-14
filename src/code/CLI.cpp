@@ -7,8 +7,8 @@
 #include "..\\header\\MinifyingXMLFile.h"
 #include "..\\header\\XMLtoTree.h"
 #include "..\\header\\XMLtoJSON.h"
-// #include "..\\header\\FormattingXMLFile.h"
-// #include "..\\header\\FormatXMLFile.h"
+#include "../header/PrettifyingXMLFile.h"
+
 
 using namespace std;
 
@@ -245,14 +245,13 @@ int run_cli(int argc, char **argv)
             return 0;
         }
 
-        // format
-        if (args.cmd == "format")
+        // prettify
+        if (args.cmd == "prettify")
         {
             string xml = readFile(args.inPath);
-
-            ////////////////////////////
-            /////Waiting for Om Farouk's Formatting Function/////
-            throw runtime_error("format command not wired: set your formatting function call in cli.cpp (format section).");
+            string p=PrettifyingXMLFile(xml);
+            writeFileText(args.outPath, p);
+            return 0;
         }
 
         // compress (single file: out.comp contains dict + data)
