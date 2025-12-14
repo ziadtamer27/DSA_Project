@@ -21,6 +21,5 @@ public:
         children.push_back(child);
     }
 };
-void printTree(Node* node,int depth);
 Node* XMLtoTree(string xmlfile);
 #endif
