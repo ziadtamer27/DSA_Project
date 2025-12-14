@@ -52,14 +52,14 @@ string PrettifyingXMLFile(string xml) {
                                 string innerTrim = trim(text);
 
                                 if (innerTrim.find('\n') == string::npos && innerTrim.size() <= 80) {
-                                    // short single-line content: keep tags and text on same line
+                            
                                     if (!s.empty()) s += '\n';
                                     s.append(level * 4, ' ');
                                     s += openTag;
                                     s += innerTrim;
                                     s += closeTag;
                                 } else {
-                                    // multi-line or long content: block form with inner lines indented
+                          
                                     vector<string> lines;
                                     size_t p = 0;
                                     while (p < text.size()) {
@@ -107,7 +107,6 @@ string PrettifyingXMLFile(string xml) {
             string text = xml.substr(i, j - i);
             string t = trim(text);
             if (!t.empty()) {
-                // inline short single-line text, otherwise place on its own indented line
                 if (t.find('\n') == string::npos && t.size() < 200) {
                     s += t;
                     f = true;
