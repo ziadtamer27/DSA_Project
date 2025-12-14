@@ -1,7 +1,5 @@
 #include "..\\header\\XMLtoTree.h"
 
-
-
 Node* XMLtoTree(string xmlfile){
     Node* root = nullptr;
     stack<Node*> nodeStack;
@@ -46,17 +44,6 @@ Node* XMLtoTree(string xmlfile){
             }
         }
     }
+    return root;
 }
 
-void printTree(Node* node, int depth = 0) {
-    if (node == nullptr) return;
-    cout << string(depth * 2, ' ') << "<" << node->tag << ">";
-    if (!node->data.empty()) {
-        cout << node->data;
-    }
-    cout << endl;
-    for (Node* child : node->children) {
-        printTree(child, depth + 1);
-    }
-    cout << string(depth * 2, ' ') << "</" << node->tag << ">" << endl;
-}
