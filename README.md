@@ -1,12 +1,9 @@
-**Direct answer:**
-Below is an updated **README.md** that matches your new setup: no Qt installation, no build steps for GUI, two folders (CLI_mode / GUI), and the GUI runs مباشرة from `GUI/Release`.
-
 ---
 
-## **XML Editor & Social Network Analyzer**
+# **XML Editor & Social Network Analyzer**
 
-A C++ desktop tool for processing XML files that represent a social network.
-The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt installation required).
+This project is a C++ desktop tool (CLI + GUI later) that processes XML files representing a social network.
+It supports XML validation, formatting, minifying, conversion to JSON, custom compression, decompression, and graph-based network analysis.
 
 ---
 
@@ -15,53 +12,56 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 ```
 .
 ├── README.md
+├── xml_editor.exe
 │
-├── CLI_mode
-│   ├── xml_editor.exe
-│   ├── inputXMLfiles
-│   │   └── sample.xml
-│   ├── outputfiles
-│   │   ├── compresed_file.comp
-│   │   ├── decompressed_file.xml
-│   │   └── JSON_output.json
-│   └── src
-│       ├── code
-│       └── header
+├── inputXMLfiles
+│   └── sample.xml
 │
-└── GUI
-    ├── Release
-    │   └── xml_editor_gui.exe
-    └── src_code
+├── outputfiles
+│   ├── compresed_file.comp
+│   ├── decompressed_file.xml
+│   └── JSON_output.json
+│
+└── src
+    ├── code
+    │   ├── CheckXmlFile.cpp
+    │   ├── CompressingXMLFile.cpp
+    │   ├── DecompressingXMLFile.cpp
+    │   ├── main.cpp
+    │   ├── MinifyingXMLFile.cpp
+    │   ├── NetworkBuilder.cpp
+    │   ├── XMLtoJSON.cpp
+    │   └── XMLtoTree.cpp
+    │
+    └── header
+        ├── CheckXmlFile.h
+        ├── CompressingXML.h
+        ├── DecompressingXML.h
+        ├── MinifyingXMLFile.h
+        ├── NetworkBuilder.h
+        ├── XMLtoJSON.h
+        └── XMLtoTree.h
 ```
 
 ---
 
-## 🚀 **How to Run**
+## ⚙️ **Build Instructions**
 
-### 🔹 GUI Mode (Recommended)
-
-✔ **No build required**
-✔ **No Qt installation needed**
-
-Just run:
-
-```
-GUI/Release/xml_editor_gui.exe
-```
-
----
-
-### 🔹 CLI Mode
-
-Run the executable from `CLI_mode`:
+Compile all `.cpp` files at once:
 
 ```bash
-xml_editor.exe <command> [options]
+g++ src/code/*.cpp -o xml_editor.exe
+```
+
+Run:
+
+```bash
+./xml_editor.exe
 ```
 
 ---
 
-## 🧰 **Supported CLI Operations**
+## 🚀 **Supported CLI Operations**
 
 | Operation                | Command Example                                     | Description                              |
 | ------------------------ | --------------------------------------------------- | ---------------------------------------- |
@@ -81,52 +81,140 @@ xml_editor.exe <command> [options]
 
 ---
 
-## 📦 **Core Features**
+## 📦 **Modules Overview**
 
-### **XML Processing**
+### **1️⃣ XML Parsing**
 
-- XML validation and auto-fixing
-- Formatting (pretty print)
-- Minifying
+* Converts raw XML into a tree structure.
+* Detects mismatched, missing, or malformed tags.
+* Implemented in:
+  `XMLtoTree.cpp`, `CheckXmlFile.cpp`
 
-### **Conversion**
+### **2️⃣ XML Formatting & Minifying**
 
-- XML → JSON conversion with full hierarchy support
+* Beautifies XML with indentation.
+* Produces compact versions (minified).
+* Implemented in:
+  `MinifyingXMLFile.cpp`
 
-### **Compression**
+### **3️⃣ JSON Conversion**
 
-- Custom BPE-inspired compression
-- Full decompression back to original XML
+* Recursively converts XML tree → JSON format.
+* Supports arrays, nested objects, and text nodes.
+* Implemented in:
+  `XMLtoJSON.cpp`
 
-### **Social Network Analysis**
+### **4️⃣ Compression & Decompression**
 
-- Graph-based user & follower representation
-- Influence and activity metrics
-- Mutual followers & suggestions
-- Post search by keywords
+* Custom text compression algorithm (BPE-inspired).
+* Saves compressed output as `.comp`.
+* Implemented in:
+  `CompressingXMLFile.cpp`, `DecompressingXMLFile.cpp`
+
+### **5️⃣ Network Graph Construction**
+
+* Builds graph from `<user>` and follower relationships.
+* Supports analysis operations:
+
+  * most active
+  * most influencer
+  * mutual followers
+  * suggestions
+* Implemented in:
+  `NetworkBuilder.cpp`
+
+---
+
+## 🧪 **Test XML Files**
+
+Located in `XMLfiles/`:
+
+* `sample.xml`
+* `compressed_file.xml`
+* `decompressed_file.xml`
 
 ---
 
-## 🖥️ **GUI Mode Features**
+## 📌 **Planned Additions**
 
-- Windows desktop application
-- No external dependencies required
-- File picker for input/output
-- Command selector (verify, minify, json, compress, etc.)
-- Preview windows for:
-
-  - XML
-  - JSON
-  - Logs / messages
-
-- Internally wraps the same logic as the CLI
+* GUI Mode (Qt / wxWidgets / SFML / ImGui)
+* Graph visualization (PNG/JPG export)
+* Search indexing optimization
+* Further compression improvements
 
 ---
 
-## 📌 **Notes**
+## 🖥️ **Qt GUI (New)** ✅
 
-- GUI executable is **prebuilt and ready**
-- Source code for both CLI and GUI is included
-- CLI and GUI share the same processing backend
+A Qt Widgets based GUI has been added under `src/gui` and a CMake build that produces `xml_editor_gui`.
+
+### Build (Windows example)
+
+1. Install Qt (Qt 6+ or Qt 5) and ensure CMake can find it. You may need to set `CMAKE_PREFIX_PATH` to your Qt installation `lib/cmake` folder.
+
+2. Generate build files and build:
+
+```powershell
+mkdir build
+cd build
+cmake .. -A x64 -DCMAKE_PREFIX_PATH="C:/Qt/6.6.2/msvc2019_64/lib/cmake"
+cmake --build . --config Release
+```
+
+3. Run the GUI:
+
+```powershell
+# Release build example path
+.\bin\xml_editor_gui.exe
+```
+
+### GUI features (initial)
+
+* Multi-window Qt Widgets application:
+  * Main window with command selector, input/output file pickers, and Run button.
+  * Separate preview windows for XML, JSON and logs (open from Windows menu).
+* Wraps existing CLI functions: verify, mini, json, prettify, compress, decompress.
+* Saves previews and output files via standard dialogs.
 
 ---
+
+If you prefer, I can:
+
+* Add .ui files and polish the layout with Designer ✅
+* Add drag-and-drop support for files ✅
+* Add a dedicated Compress/Decompress metadata viewer ✅
+
+---
+
+## 🌐 Local Web UI (no install required)
+
+A browser-based UI is available by building the `xml_editor_web` target. It serves a small single-page app on http://localhost:8080 and exposes endpoints for the supported commands. Users only need the single binary and a web browser — no extra software install.
+
+### Usage
+
+1. Build the project (CMake):
+```powershell
+mkdir build
+cd build
+cmake .. -A x64
+cmake --build . --config Release
+```
+
+2. Run the web server:
+```powershell
+.\bin\xml_editor_web.exe
+```
+
+3. Open a browser and visit:
+
+```
+http://localhost:8080
+```
+
+The web UI supports: verify, mini, json, prettify, compress (downloadable `.comp`), and decompress (upload `.comp`).
+
+---
+
+Tell me if you want: drag-and-drop, persistent file history, or more features in the web UI and I will implement them next. 
+
+
