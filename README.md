@@ -144,3 +144,46 @@ Located in `XMLfiles/`:
 
 ---
 
+## 🖥️ **Qt GUI (New)** ✅
+
+A Qt Widgets based GUI has been added under `src/gui` and a CMake build that produces `xml_editor_gui`.
+
+### Build (Windows example)
+
+1. Install Qt (Qt 6+ or Qt 5) and ensure CMake can find it. You may need to set `CMAKE_PREFIX_PATH` to your Qt installation `lib/cmake` folder.
+
+2. Generate build files and build:
+
+```powershell
+mkdir build
+cd build
+cmake .. -A x64 -DCMAKE_PREFIX_PATH="C:/Qt/6.6.2/msvc2019_64/lib/cmake"
+cmake --build . --config Release
+```
+
+3. Run the GUI:
+
+```powershell
+# Release build example path
+.\bin\xml_editor_gui.exe
+```
+
+### GUI features (initial)
+
+* Multi-window Qt Widgets application:
+  * Main window with command selector, input/output file pickers, and Run button.
+  * Separate preview windows for XML, JSON and logs (open from Windows menu).
+* Wraps existing CLI functions: verify, mini, json, prettify, compress, decompress.
+* Saves previews and output files via standard dialogs.
+
+---
+
+If you prefer, I can:
+
+* Add .ui files and polish the layout with Designer ✅
+* Add drag-and-drop support for files ✅
+* Add a dedicated Compress/Decompress metadata viewer ✅
+
+Tell me which enhancements you want next and I will continue. 
+
+
