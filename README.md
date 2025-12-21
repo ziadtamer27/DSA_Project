@@ -1,6 +1,3 @@
-**Direct answer:**
-Below is an updated **README.md** that matches your new setup: no Qt installation, no build steps for GUI, two folders (CLI_mode / GUI), and the GUI runs مباشرة from `GUI/Release`.
-
 ---
 
 ## **XML Editor & Social Network Analyzer**
