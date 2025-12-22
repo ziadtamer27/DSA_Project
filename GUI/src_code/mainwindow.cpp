@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <bits\stdc++.h>
 
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
+
+#include <fstream>
+#include <map>
+#include <string>
 
 #include "CheckXmlFile.h"
 #include "CompressingXML.h"
@@ -15,9 +18,11 @@
 #include "PrettifyingXMLFile.h"
 
 using namespace std;
+
+// ---------- shared types ----------
 using DictType = map<unsigned char, string>;
 
-
+// ---------- file helpers ----------
 static string readFileQt(const QString &path)
 {
     QFile file(path);
@@ -36,6 +41,19 @@ static void writeFileQt(const QString &path, const string &content)
     out << QString::fromStdString(content);
 }
 
+// ---------- input chooser ----------
+static string getInputXML(Ui::MainWindow *ui)
+{
+    if (!ui->inputText->toPlainText().trimmed().isEmpty())
+        return ui->inputText->toPlainText().toStdString();
+
+    if (!ui->inputPath->text().isEmpty())
+        return readFileQt(ui->inputPath->text());
+
+    throw runtime_error("No input provided (paste XML or choose file)");
+}
+
+// ---------- ctor / dtor ----------
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -51,9 +69,11 @@ MainWindow::~MainWindow()
 // ---------- browse ----------
 void MainWindow::on_browseInput_clicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, "Select Input File");
-    if (!path.isEmpty())
+    QString path = QFileDialog::getOpenFileName(this, "Select XML File");
+    if (!path.isEmpty()) {
         ui->inputPath->setText(path);
+        ui->inputText->setPlainText(QString::fromStdString(readFileQt(path)));
+    }
 }
 
 void MainWindow::on_browseOutput_clicked()
@@ -67,7 +87,7 @@ void MainWindow::on_browseOutput_clicked()
 void MainWindow::on_verifyBtn_clicked()
 {
     try {
-        string xml = readFileQt(ui->inputPath->text());
+        string xml = getInputXML(ui);
         string report = Checkxmlfile(xml);
         ui->outputView->setPlainText(QString::fromStdString(report));
     } catch (exception &e) {
@@ -79,9 +99,12 @@ void MainWindow::on_verifyBtn_clicked()
 void MainWindow::on_miniBtn_clicked()
 {
     try {
-        string xml = readFileQt(ui->inputPath->text());
+        string xml = getInputXML(ui);
         string mini = Minifyingxmlfile(xml);
-        writeFileQt(ui->outputPath->text(), mini);
+        ui->outputView->setPlainText(QString::fromStdString(mini));
+
+        if (!ui->outputPath->text().isEmpty())
+            writeFileQt(ui->outputPath->text(), mini);
     } catch (exception &e) {
         QMessageBox::critical(this, "Error", e.what());
     }
@@ -91,9 +114,12 @@ void MainWindow::on_miniBtn_clicked()
 void MainWindow::on_prettifyBtn_clicked()
 {
     try {
-        string xml = readFileQt(ui->inputPath->text());
+        string xml = getInputXML(ui);
         string p = PrettifyingXMLFile(xml);
-        writeFileQt(ui->outputPath->text(), p);
+        ui->outputView->setPlainText(QString::fromStdString(p));
+
+        if (!ui->outputPath->text().isEmpty())
+            writeFileQt(ui->outputPath->text(), p);
     } catch (exception &e) {
         QMessageBox::critical(this, "Error", e.what());
     }
@@ -103,10 +129,13 @@ void MainWindow::on_prettifyBtn_clicked()
 void MainWindow::on_jsonBtn_clicked()
 {
     try {
-        string xml = readFileQt(ui->inputPath->text());
+        string xml = getInputXML(ui);
         Node *root = XMLtoTree(xml);
         string json = XMLtoJSON(root);
-        writeFileQt(ui->outputPath->text(), json);
+        ui->outputView->setPlainText(QString::fromStdString(json));
+
+        if (!ui->outputPath->text().isEmpty())
+            writeFileQt(ui->outputPath->text(), json);
     } catch (exception &e) {
         QMessageBox::critical(this, "Error", e.what());
     }
@@ -116,16 +145,19 @@ void MainWindow::on_jsonBtn_clicked()
 void MainWindow::on_compressBtn_clicked()
 {
     try {
-        string xml = readFileQt(ui->inputPath->text());
+        string xml = getInputXML(ui);
         string s = CompressingXMLFile(xml);
         auto e = BytePairEncoding(s);
+
+        if (ui->outputPath->text().isEmpty())
+            throw runtime_error("Output file required for compression");
 
         ofstream out(ui->outputPath->text().toStdString(),
                      ios::binary | ios::trunc);
         if (!out.is_open())
             throw runtime_error("Cannot open output file");
 
-        uint32_t dictSize = (uint32_t)e.second.size();
+        uint32_t dictSize = e.second.size();
         out.write(reinterpret_cast<const char*>(&dictSize), sizeof(dictSize));
 
         for (auto &kv : e.second) {
@@ -140,17 +172,23 @@ void MainWindow::on_compressBtn_clicked()
         out.write(reinterpret_cast<const char*>(&dataSize), sizeof(dataSize));
         out.write(e.first.data(), dataSize);
         out.close();
+
+        ui->outputView->setPlainText("Compression completed successfully.");
     } catch (exception &e) {
         QMessageBox::critical(this, "Error", e.what());
     }
 }
 
 // ---------- DECOMPRESS ----------
-
 void MainWindow::on_decompressBtn_clicked()
 {
-
     try {
+        if (ui->inputPath->text().isEmpty())
+            throw runtime_error("Decompression requires input file");
+
+        if (ui->outputPath->text().isEmpty())
+            throw runtime_error("Output file required");
+
         ifstream in(ui->inputPath->text().toStdString(), ios::binary);
         if (!in.is_open())
             throw runtime_error("Cannot open input file");
@@ -177,9 +215,8 @@ void MainWindow::on_decompressBtn_clicked()
 
         string restored = DecompressingXMLFile(comp, dict);
         writeFileQt(ui->outputPath->text(), restored);
+        ui->outputView->setPlainText(QString::fromStdString(restored));
     } catch (exception &e) {
         QMessageBox::critical(this, "Error", e.what());
     }
-
 }
-
