@@ -1,5 +1,5 @@
-E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/EWIEGA46WW/moc_mainwindow.cpp: E:/apps/QtEdu/projects/DSA/DSA_GUI/mainwindow.h \
-  E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/moc_predefs.h \
+E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/EWIEGA46WW/moc_mainwindow.cpp: E:/github/DSA_Project/GUI/src_code/mainwindow.h \
+  E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/moc_predefs.h \
   E:/apps/QtEdu/6.10.1/mingw_64/include/QtCore/q17memory.h \
   E:/apps/QtEdu/6.10.1/mingw_64/include/QtCore/q20functional.h \
   E:/apps/QtEdu/6.10.1/mingw_64/include/QtCore/q20iterator.h \

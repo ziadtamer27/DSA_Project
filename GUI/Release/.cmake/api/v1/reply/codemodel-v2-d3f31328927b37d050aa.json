@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "DSA_GUI::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DSA_GUI-Release-ce81c71a525864a98af5.json",
+					"jsonFile" : "target-DSA_GUI-Release-64bd48abe11252fb669b.json",
 					"name" : "DSA_GUI",
 					"projectIndex" : 0
 				},
@@ -68,8 +68,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
-		"source" : "E:/apps/QtEdu/projects/DSA/DSA_GUI"
+		"build" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
+		"source" : "E:/github/DSA_Project/GUI/src_code"
 	},
 	"version" : 
 	{
