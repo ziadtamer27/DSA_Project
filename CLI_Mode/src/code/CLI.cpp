@@ -1,23 +1,18 @@
-#include <bits/stdc++.h>
-
-#include "..\\header\\cli.h"
-#include "..\\header\\CheckXmlFile.h"
-#include "..\\header\\CompressingXML.h"
-#include "..\\header\\DecompressingXML.h"
-#include "..\\header\\MinifyingXMLFile.h"
-#include "..\\header\\XMLtoTree.h"
-#include "..\\header\\XMLtoJSON.h"
-#include "..\\header\\PrettifyingXMLFile.h"
+#include "..\\header\\CLI.h"
 
 using namespace std;
 
-string readFile(const string &path)
-{
+string readFile(const string& path) {
     ifstream file(path);
+    if (!file.is_open()) {
+        cerr << "Error: file not found or cannot be opened -> " << path << endl;
+        return "";
+    }
     stringstream buffer;
     buffer << file.rdbuf();
     return buffer.str();
 }
+
 static string readFileBinary(const string &path)
 {
     ifstream file(path, ios::in | ios::binary);
