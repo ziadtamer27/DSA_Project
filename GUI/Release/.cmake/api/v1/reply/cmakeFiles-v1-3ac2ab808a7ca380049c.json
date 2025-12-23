@@ -1629,8 +1629,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
-		"source" : "E:/apps/QtEdu/projects/DSA/DSA_GUI"
+		"build" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
+		"source" : "E:/github/DSA_Project/GUI/src_code"
 	},
 	"version" : 
 	{

@@ -68,7 +68,10 @@ vector<User> addusers(string xmlfile){
     }
     return users;
 }
-vector<pair<int,vector<int>>> NetworkBuilder(string xmlfile) {
+vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
+
+
+vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
     vector<pair<int,vector<int>>> connections;
     for(int i=0;i<xmlfile.size();i++){
         if(xmlfile[i]=='<'){

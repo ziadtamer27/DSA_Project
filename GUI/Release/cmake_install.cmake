@@ -1,4 +1,4 @@
-# Install script for directory: E:/apps/QtEdu/projects/DSA/DSA_GUI
+# Install script for directory: E:/github/DSA_Project/GUI/src_code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI.exe")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI.exe")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/DSA_GUI.exe" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/DSA_GUI.exe")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -62,6 +62,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

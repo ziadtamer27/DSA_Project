@@ -2,7 +2,5 @@
 #define NetworkBuilder_H
 #include <bits/stdc++.h>
 using namespace std;
-class User;
-vector<pair<int,vector<int>>> NetworkBuilder(string xmlfile);
-vector<User> addusers(string xmlfile);
+vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile);
 #endif

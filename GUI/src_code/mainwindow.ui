@@ -6,86 +6,437 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
-    <height>637</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>XML Editor</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Modern Dark Theme */
+QMainWindow {
+    background-color: #0f172a;
+}
+
+QWidget {
+    background-color: transparent;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', 'Inter', sans-serif;
+    font-size: 11pt;
+}
+
+/* Card-style containers */
+QWidget#centralwidget {
+    background-color: #0f172a;
+}
+
+/* Labels */
+QLabel {
+    color: #94a3b8;
+    font-weight: 500;
+    padding: 2px;
+    font-size: 10.5pt;
+}
+
+/* Input fields */
+QLineEdit {
+    background-color: #1e293b;
+    border: 1.5px solid #334155;
+    border-radius: 6px;
+    padding: 10px 12px;
+    selection-background-color: #3b82f6;
+    color: #f1f5f9;
+    font-size: 10.5pt;
+}
+
+QLineEdit:hover {
+    border-color: #475569;
+}
+
+QLineEdit:focus {
+    border-color: #3b82f6;
+    background-color: #1e293b;
+    outline: none;
+}
+
+QLineEdit:disabled {
+    background-color: #1e293b;
+    color: #64748b;
+    border-color: #334155;
+}
+
+QLineEdit::placeholder {
+    color: #64748b;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 10.5pt;
+    min-width: 100px;
+    transition: all 0.2s ease;
+}
+
+QPushButton:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+QPushButton:pressed {
+    background-color: #1d4ed8;
+    transform: translateY(0);
+}
+
+QPushButton:disabled {
+    background-color: #334155;
+    color: #94a3b8;
+}
+
+/* Special button variants */
+QPushButton#verifyBtn {
+    background-color: #10b981;
+}
+
+QPushButton#verifyBtn:hover {
+    background-color: #059669;
+}
+
+QPushButton#verifyBtn:pressed {
+    background-color: #047857;
+}
+
+QPushButton#compressBtn {
+    background-color: #8b5cf6;
+}
+
+QPushButton#compressBtn:hover {
+    background-color: #7c3aed;
+}
+
+QPushButton#compressBtn:pressed {
+    background-color: #6d28d9;
+}
+
+QPushButton#decompressBtn {
+    background-color: #8b5cf6;
+}
+
+QPushButton#decompressBtn:hover {
+    background-color: #7c3aed;
+}
+
+QPushButton#decompressBtn:pressed {
+    background-color: #6d28d9;
+}
+
+/* Text editors */
+QPlainTextEdit {
+    background-color: #1e293b;
+    border: 1.5px solid #334155;
+    border-radius: 8px;
+    padding: 12px;
+    selection-background-color: #3b82f6;
+    color: #f1f5f9;
+    font-family: 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+    font-size: 10.5pt;
+    line-height: 1.4;
+}
+
+QPlainTextEdit:hover {
+    border-color: #475569;
+}
+
+QPlainTextEdit:focus {
+    border-color: #3b82f6;
+}
+
+QPlainTextEdit::placeholder {
+    color: #64748b;
+}
+
+/* Splitter */
+QSplitter::handle {
+    background-color: #334155;
+    width: 2px;
+}
+
+QSplitter::handle:hover {
+    background-color: #475569;
+}
+
+QSplitter::handle:horizontal {
+    margin: 0 4px;
+}
+
+/* Menu bar */
+QMenuBar {
+    background-color: #0f172a;
+    padding: 4px;
+    border-bottom: 1px solid #1e293b;
+}
+
+QMenuBar::item {
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: #94a3b8;
+}
+
+QMenuBar::item:selected {
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
+QMenuBar::item:pressed {
+    background-color: #334155;
+}
+
+/* Menu */
+QMenu {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 8px 24px 8px 12px;
+    border-radius: 4px;
+    color: #e2e8f0;
+}
+
+QMenu::item:selected {
+    background-color: #3b82f6;
+    color: white;
+}
+
+QMenu::item:disabled {
+    color: #64748b;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #334155;
+    margin: 4px 8px;
+}
+
+/* Status bar */
+QStatusBar {
+    background-color: #0f172a;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+    padding: 8px;
+    font-size: 10pt;
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+/* Layout spacing */
+QHBoxLayout, QVBoxLayout, QGridLayout {
+    spacing: 12px;
+    margin: 0;
+}
+
+/* Grid layout specific */
+QGridLayout {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+/* Tooltip */
+QToolTip {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 10pt;
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+    border: none;
+    background-color: #1e293b;
+    width: 10px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #475569;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #64748b;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background-color: #1e293b;
+    height: 10px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #475569;
+    border-radius: 5px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #64748b;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <property name="spacing">
+     <number>16</number>
+    </property>
+    <property name="leftMargin">
+     <number>24</number>
+    </property>
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+    <property name="rightMargin">
+     <number>24</number>
+    </property>
+    <property name="bottomMargin">
+     <number>20</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="inputLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
       <item>
-       <widget class="QLineEdit" name="inputPath"/>
+       <widget class="QLabel" name="inputLabel">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Input Path:   </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="inputPath">
+        <property name="placeholderText">
+         <string>Enter path or drag file here...</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="browseInput">
+        <property name="toolTip">
+         <string>Select input XML file</string>
+        </property>
         <property name="text">
-         <string>Browse Input</string>
+         <string>Browse</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="3" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <layout class="QHBoxLayout" name="outputLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
       <item>
-       <widget class="QLineEdit" name="outputPath"/>
+       <widget class="QLabel" name="outputLabel">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Output Path:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="outputPath">
+        <property name="placeholderText">
+         <string>Enter output file path...</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="browseOutput">
+        <property name="toolTip">
+         <string>Select output file location</string>
+        </property>
         <property name="text">
-         <string>Browse Output</string>
+         <string>Browse</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="7" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QPlainTextEdit" name="outputView">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item>
+     <widget class="QFrame" name="divider">
+      <property name="styleSheet">
+       <string notr="true">background-color: #334155; border: none; height: 1px; margin: 8px 0;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Sunken</enum>
+      </property>
+     </widget>
     </item>
-    <item row="1" column="0">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QPushButton" name="compressBtn">
-        <property name="text">
-         <string>Compress</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="decompressBtn">
-        <property name="text">
-         <string>Decompress</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="jsonBtn">
-        <property name="text">
-         <string>To JSON</string>
-        </property>
-       </widget>
-      </item>
+    <item>
+     <layout class="QGridLayout" name="buttonsLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
       <item row="0" column="0">
        <widget class="QPushButton" name="verifyBtn">
+        <property name="toolTip">
+         <string>Validate XML structure</string>
+        </property>
         <property name="text">
-         <string>Verify</string>
+         <string>✓ Verify</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="miniBtn">
+        <property name="toolTip">
+         <string>Remove whitespace and compress XML</string>
+        </property>
         <property name="text">
          <string>Minify</string>
         </property>
@@ -93,12 +444,173 @@
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="prettifyBtn">
+        <property name="toolTip">
+         <string>Format XML with proper indentation</string>
+        </property>
         <property name="text">
          <string>Prettify</string>
         </property>
        </widget>
       </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="jsonBtn">
+        <property name="toolTip">
+         <string>Convert XML to JSON format</string>
+        </property>
+        <property name="text">
+         <string>To JSON</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="compressBtn">
+        <property name="toolTip">
+         <string>Compress XML data</string>
+        </property>
+        <property name="text">
+         <string>Compress</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" colspan="2">
+       <widget class="QPushButton" name="decompressBtn">
+        <property name="toolTip">
+         <string>Decompress XML data</string>
+        </property>
+        <property name="text">
+         <string>Decompress</string>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="editorLabel">
+      <property name="styleSheet">
+       <string notr="true">font-weight: 600; font-size: 11.5pt; color: #e2e8f0; padding: 4px;</string>
+      </property>
+      <property name="text">
+       <string>Editor</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <property name="handleWidth">
+       <number>2</number>
+      </property>
+      <property name="childrenCollapsible">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="inputContainer">
+       <layout class="QVBoxLayout" name="inputContainerLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="inputTitle">
+          <property name="styleSheet">
+           <string notr="true">color: #94a3b8; font-size: 10pt; padding-left: 4px;</string>
+          </property>
+          <property name="text">
+           <string>Input XML</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="inputText">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="placeholderText">
+           <string>Enter XML content here or load from file...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="outputContainer">
+       <layout class="QVBoxLayout" name="outputContainerLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="outputTitle">
+          <property name="styleSheet">
+           <string notr="true">color: #94a3b8; font-size: 10pt; padding-left: 4px;</string>
+          </property>
+          <property name="text">
+           <string>Output</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="outputView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>Results will appear here...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -107,18 +619,113 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>955</width>
-     <height>25</height>
+     <width>1000</width>
+     <height>48</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuXMLeditor">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>XMLeditor</string>
+     <string>&amp;File</string>
     </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
-   <addaction name="menuXMLeditor"/>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="actionClear"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="actionSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <action name="actionOpen">
+   <property name="text">
+    <string>&amp;Open...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>&amp;Save Output</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F4</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>C&amp;lear All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>&amp;Settings...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

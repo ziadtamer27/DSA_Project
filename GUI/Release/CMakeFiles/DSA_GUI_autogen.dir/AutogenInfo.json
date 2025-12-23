@@ -1,19 +1,19 @@
 {
 	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
-	"BUILD_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen",
-	"CMAKE_BINARY_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
-	"CMAKE_CURRENT_BINARY_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
-	"CMAKE_CURRENT_SOURCE_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI",
+	"BUILD_DIR" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen",
+	"CMAKE_BINARY_DIR" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
+	"CMAKE_CURRENT_BINARY_DIR" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "E:/github/DSA_Project/GUI/src_code",
 	"CMAKE_EXECUTABLE" : "E:/apps/QtEdu/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/CMakeLists.txt",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/.qtc/package-manager/auto-setup.cmake",
+		"E:/github/DSA_Project/GUI/src_code/CMakeLists.txt",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/.qtc/package-manager/auto-setup.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeSystem.cmake",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeSystem.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeNinjaFindMake.cmake",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/.qtc/package-manager/maintenance_tool_provider.cmake",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/.qtc/package-manager/maintenance_tool_provider.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake",
@@ -66,7 +66,7 @@
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake",
@@ -81,7 +81,7 @@
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake",
@@ -98,7 +98,7 @@
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in",
-		"E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+		"E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
 		"E:/apps/QtEdu/6.10.1/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
 		"E:/apps/QtEdu/6.10.1/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
@@ -378,76 +378,76 @@
 		"E:/apps/QtEdu/6.10.1/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI",
+	"CMAKE_SOURCE_DIR" : "E:/github/DSA_Project/GUI/src_code",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/deps",
+	"DEP_FILE" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "DSA_GUI_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/CLI.h",
+			"E:/github/DSA_Project/GUI/src_code/CLI.h",
 			"MU",
 			"EWIEGA46WW/moc_CLI.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/CheckXmlFile.h",
+			"E:/github/DSA_Project/GUI/src_code/CheckXmlFile.h",
 			"MU",
 			"EWIEGA46WW/moc_CheckXmlFile.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/CompressingXML.h",
+			"E:/github/DSA_Project/GUI/src_code/CompressingXML.h",
 			"MU",
 			"EWIEGA46WW/moc_CompressingXML.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/DecompressingXML.h",
+			"E:/github/DSA_Project/GUI/src_code/DecompressingXML.h",
 			"MU",
 			"EWIEGA46WW/moc_DecompressingXML.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/MinifyingXMLFile.h",
+			"E:/github/DSA_Project/GUI/src_code/MinifyingXMLFile.h",
 			"MU",
 			"EWIEGA46WW/moc_MinifyingXMLFile.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/NetworkBuilder.h",
+			"E:/github/DSA_Project/GUI/src_code/NetworkBuilder.h",
 			"MU",
 			"EWIEGA46WW/moc_NetworkBuilder.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/PrettifyingXMLFile.h",
+			"E:/github/DSA_Project/GUI/src_code/PrettifyingXMLFile.h",
 			"MU",
 			"EWIEGA46WW/moc_PrettifyingXMLFile.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/XMLtoJSON.h",
+			"E:/github/DSA_Project/GUI/src_code/XMLtoJSON.h",
 			"MU",
 			"EWIEGA46WW/moc_XMLtoJSON.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/XMLtoTree.h",
+			"E:/github/DSA_Project/GUI/src_code/XMLtoTree.h",
 			"MU",
 			"EWIEGA46WW/moc_XMLtoTree.cpp",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/mainwindow.h",
+			"E:/github/DSA_Project/GUI/src_code/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/include",
-	"MOC_COMPILATION_FILE" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/include",
+	"MOC_COMPILATION_FILE" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -504,42 +504,42 @@
 		"-c",
 		"E:/apps/QtEdu/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/DSA_GUI_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
-	"PARSE_CACHE_FILE" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/DSA_GUI_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/DSA_GUI_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "E:/apps/QtEdu/6.10.1/mingw_64/bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "E:/apps/QtEdu/6.10.1/mingw_64/bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 10,
-	"SETTINGS_FILE" : "E:/apps/QtEdu/projects/DSA/DSA_GUI/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/DSA_GUI_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "E:/github/DSA_Project/GUI/src_code/build/Desktop_Qt_6_10_1_MinGW_64_bit-Release/CMakeFiles/DSA_GUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/CLI.cpp", "MU", null ],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/CheckXmlFile.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/CLI.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/CheckXmlFile.cpp", "MU", null ],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/CompressingXMLFile.cpp",
+			"E:/github/DSA_Project/GUI/src_code/CompressingXMLFile.cpp",
 			"MU",
 			null
 		],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/DecompressingXMLFile.cpp",
+			"E:/github/DSA_Project/GUI/src_code/DecompressingXMLFile.cpp",
 			"MU",
 			null
 		],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/MinifyingXMLFile.cpp", "MU", null ],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/NetworkBuilder.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/MinifyingXMLFile.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/NetworkBuilder.cpp", "MU", null ],
 		[
-			"E:/apps/QtEdu/projects/DSA/DSA_GUI/PrettifyingXMLFie.cpp",
+			"E:/github/DSA_Project/GUI/src_code/PrettifyingXMLFie.cpp",
 			"MU",
 			null
 		],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/XMLtoJSON.cpp", "MU", null ],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/XMLtoTree.cpp", "MU", null ],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/main.cpp", "MU", null ],
-		[ "E:/apps/QtEdu/projects/DSA/DSA_GUI/mainwindow.cpp", "MU", null ]
+		[ "E:/github/DSA_Project/GUI/src_code/XMLtoJSON.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/XMLtoTree.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/main.cpp", "MU", null ],
+		[ "E:/github/DSA_Project/GUI/src_code/mainwindow.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
