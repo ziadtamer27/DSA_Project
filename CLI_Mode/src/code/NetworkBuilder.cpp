@@ -1,5 +1,4 @@
 #include "..\\header\\NetworkBuilder.h"
-
 class User {
 public:
     string name;
@@ -21,6 +20,7 @@ public:
         return id;
     }
 };
+
 vector<User> addusers(string xmlfile){
     vector<User> users;
     for(int i=0;i<xmlfile.size();i++){

@@ -8,6 +8,7 @@
 #include "..\\header\\XMLtoTree.h"
 #include "..\\header\\XMLtoJSON.h"
 #include "..\\header\\PrettifyingXMLFile.h"
+#include "..\\header\\XMLtoGraph.h"
 
 using namespace std;
 
