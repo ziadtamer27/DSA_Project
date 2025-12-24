@@ -37,23 +37,25 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 
 ## 🧰 **Supported CLI Operations**
 
-| Operation                | Command Example                                     | Description                              |
-| ------------------------ | --------------------------------------------------- | ---------------------------------------- |
-| **Verify XML**           | `xml_editor verify -i sample.xml`                   | Checks XML consistency & reports errors. |
-| **Fix XML**              | `xml_editor verify -i sample.xml -f -o fixed.xml`   | Repairs mismatched/missing tags.         |
-| **Format XML**           | `xml_editor format -i sample.xml -o formatted.xml`  | Beautifies XML with indentation.         |
-| **Minify XML**           | `xml_editor mini -i sample.xml -o mini.xml`         | Removes whitespace to reduce size.       |
-| **Convert to JSON**      | `xml_editor json -i sample.xml -o output.json`      | Converts XML → JSON.                     |
-| **Compress XML**         | `xml_editor compress -i sample.xml -o out.comp`     | Custom compression (BPE-like).           |
-| **Decompress XML**       | `xml_editor decompress -i out.comp -o restored.xml` | Restores full XML.                       |
-| **Build Network Graph**  | `xml_editor draw -i sample.xml -o graph.jpg`        | Builds graph from users/followers.       |
-| **Most Active User**     | `xml_editor most_active -i sample.xml`              | User with most outgoing connections.     |
-| **Most Influencer User** | `xml_editor most_influencer -i sample.xml`          | User with most followers.                |
-| **Mutual Followers**     | `xml_editor mutual -i sample.xml -ids 1,2,3`        | Common followers.                        |
-| **Suggestions**          | `xml_editor suggest -i sample.xml -id 1`            | Recommended users to follow.             |
-| **Search Posts**         | `xml_editor search -w word -i sample.xml`           | Search posts by word/topic.              |
+| Operation                | Command Example                                         | Description                              |
+| ------------------------ | ------------------------------------------------------- | ---------------------------------------- |
+| **Verify XML**           | `.\xml_editor verify -i sample.xml`                     | Checks XML consistency & reports errors. |
+| **Fix XML**              | `.\xml_editor verify -i sample.xml -f -o fixed.xml`     | Repairs mismatched/missing tags.         |
+| **Format XML**           | `.\xml_editor format -i sample.xml -o formatted.xml`    | Beautifies XML with indentation.         |
+| **Minify XML**           | `.\xml_editor mini -i sample.xml -o mini.xml`           | Removes whitespace to reduce size.       |
+| **Convert to JSON**      | `.\xml_editor json -i sample.xml -o output.json`        | Converts XML → JSON.                     |
+| **Compress XML**         | `.\xml_editor compress -i sample.xml -o out.comp`       | Custom compression (BPE-like).           |
+| **Decompress XML**       | `.\xml_editor decompress -i out.comp -o restored.xml`   | Restores full XML.                       |
+| **Build Network Graph**  | `.\xml_editor draw -i sample.xml -o graph.jpg`          | Builds graph from users/followers.       |
+| **Most Active User**     | `.\xml_editor most_active -i sample.xml`                | User with most outgoing connections.     |
+| **Most Influencer User** | `.\xml_editor most_influencer -i sample.xml`            | User with most followers.                |
+| **Mutual Followers**     | `.\xml_editor mutual -i sample.xml -ids 1,2,3`          | Common followers.                        |
+| **Suggestions**          | `.\xml_editor suggest -i sample.xml -id 1`              | Recommended users to follow.             |
+| **Search Posts by Word** | `.\xml_editor search -w word -i sample.xml`            | Writes a list of posts where the word was mentioned. |
+| **Search Posts by Topic**| `.\xml_editor search -t topic -i sample.xml`           | Writes a list of posts where the topic was mentioned. |
+```
 
----
+
 
 ## 📦 **Core Features**
 
