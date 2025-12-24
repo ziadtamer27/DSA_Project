@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "..\\header\\NetworkBuilder.h"
 using namespace std;
 string suggestUser(int userid, vector<pair<int,vector<int>>> connections);
 string mutualUsers(int user1, int user2, vector<pair<int, vector<int>>> connections);

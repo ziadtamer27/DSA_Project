@@ -25,4 +25,5 @@ class User {
 };
 vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile);
 vector<User> addusers(string xmlfile);
+
 #endif

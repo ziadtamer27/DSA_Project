@@ -12,6 +12,7 @@ vector<User> addusers(string xmlfile){
                 i++;
             }
             if(tag=="user"){
+                bool flag=1;
                 string name="", id="";
                 while(true){
                     i++;
@@ -29,12 +30,13 @@ vector<User> addusers(string xmlfile){
                                 i++;
                             }
                         }
-                        else if(innerTag=="id"){
+                        else if(innerTag=="id" && flag){
                             i++;
                             while(xmlfile[i]!='<'){
                                 id+=xmlfile[i];
                                 i++;
                             }
+                            flag=0;
                         }
                         else if(innerTag=="/user"){
                             break;

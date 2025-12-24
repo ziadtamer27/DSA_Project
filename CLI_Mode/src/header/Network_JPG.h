@@ -3,5 +3,5 @@
 #include "NetworkBuilder.h"
 #include <bits/stdc++.h>
 using namespace std;
-void Network_JPG(const string& xml);
+void Network_JPG(const vector<pair<int, vector<int>>> &connections);
 #endif
