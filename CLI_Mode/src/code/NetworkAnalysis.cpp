@@ -80,8 +80,7 @@ string mutualUsers(int user1, int user2, vector<pair<int, vector<int>>> connecti
         return result;
     }
 }
-string mostInfluencer(vector<pair<int, vector<int>>> connections) {
-
+string mostInfluencer(vector<pair<int, vector<int>>> connections, const vector<User>& users){
     unordered_map<int, int> followerCount;
     for (const auto& conn : connections) 
         followerCount[conn.first] = 0;
@@ -92,6 +91,7 @@ string mostInfluencer(vector<pair<int, vector<int>>> connections) {
     }
     int maxFollowers = -1;
     int influencerId = -1;
+    string influencerName = "";
     for (const auto& entry : followerCount) {
         if (entry.second > maxFollowers) {
             maxFollowers = entry.second;
@@ -100,10 +100,18 @@ string mostInfluencer(vector<pair<int, vector<int>>> connections) {
     }
     if (influencerId == -1)
         return "No influencer found";
-    else
-        return "Most influencer user is " + to_string(influencerId) + " with " + to_string(maxFollowers) + " followers";
-}
+    else {
+        for (const auto& user : users) {
+            if (user.getId() == influencerId) {
+                influencerName = user.getName();
+                break;
+            }
+        }
+    }
+    return "Most influencer user is " + influencerName + " with ID: " + to_string(influencerId) +
+           " with " + to_string(maxFollowers) + " followers";
 
+        }
 
 
 pair<int, string> mostActiveUser(
