@@ -1,25 +1,5 @@
 #include "..\\header\\NetworkBuilder.h"
-class User {
-public:
-    string name;
-    int id;
-    User(string n, int id){
-        name = n;
-        this->id = id;
-    }
-    void setName(string n) {
-        name = n;
-    }
-    void setId(int id) {
-        this->id = id;
-    }
-    string getName() {
-        return name;
-    }
-    int getId() {
-        return id;
-    }
-};
+
 
 vector<User> addusers(string xmlfile){
     vector<User> users;
@@ -68,8 +48,6 @@ vector<User> addusers(string xmlfile){
     }
     return users;
 }
-vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
-
 
 vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
     vector<pair<int,vector<int>>> connections;
@@ -136,3 +114,4 @@ vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
     }
     return connections;
 }
+
