@@ -53,7 +53,7 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 | **Suggestions**          | `.\xml_editor suggest -i sample.xml -id 1`              | Recommended users to follow.             |
 | **Search Posts by Word** | `.\xml_editor search -w word -i sample.xml`            | Writes a list of posts where the word was mentioned. |
 | **Search Posts by Topic**| `.\xml_editor search -t topic -i sample.xml`           | Writes a list of posts where the topic was mentioned. |
-```
+
 
 
 
@@ -99,7 +99,7 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 
 ---
 
-## 📌 **Notes**
+```
 
 - GUI executable is **prebuilt and ready**
 - Source code for both CLI and GUI is included
