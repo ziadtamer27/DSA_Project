@@ -28,6 +28,15 @@ private slots:
     void on_compressBtn_clicked();
     void on_decompressBtn_clicked();
 
+    // new network features
+    void on_drawBtn_clicked();
+    void on_mostActiveBtn_clicked();
+    void on_mostInfluencerBtn_clicked();
+    void on_mutualBtn_clicked();
+    void on_suggestBtn_clicked();
+    void on_searchWordBtn_clicked();
+    void on_searchTopicBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

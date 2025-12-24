@@ -20,7 +20,7 @@
    <string>XML Editor</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* Modern Dark Theme */
+   <string notr="true">
 QMainWindow {
     background-color: #0f172a;
 }
@@ -316,7 +316,7 @@ QScrollBar::handle:horizontal:hover {
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="centralLayout">
     <property name="spacing">
-     <number>16</number>
+     <number>8</number>
     </property>
     <property name="leftMargin">
      <number>24</number>
@@ -344,7 +344,7 @@ QScrollBar::handle:horizontal:hover {
          </size>
         </property>
         <property name="text">
-         <string>Input Path:   </string>
+         <string>Input Path:</string>
         </property>
        </widget>
       </item>
@@ -405,93 +405,367 @@ QScrollBar::handle:horizontal:hover {
      </layout>
     </item>
     <item>
-     <widget class="QFrame" name="divider">
+     <widget class="QGroupBox" name="operationsGroup">
       <property name="styleSheet">
-       <string notr="true">background-color: #334155; border: none; height: 1px; margin: 8px 0;</string>
+       <string notr="true">QGroupBox {
+    border: 1.5px solid #334155;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+    background-color: #0f172a;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0 8px;
+    color: #94a3b8;
+}</string>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::HLine</enum>
+      <property name="title">
+       <string>XML Operations</string>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Sunken</enum>
-      </property>
+      <layout class="QVBoxLayout" name="operationsLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="row1Layout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="verifyBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Validate XML structure</string>
+           </property>
+           <property name="text">
+            <string>✓ Verify XML</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="miniBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Remove whitespace and compress XML</string>
+           </property>
+           <property name="text">
+            <string>Minify</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="prettifyBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Format XML with proper indentation</string>
+           </property>
+           <property name="text">
+            <string>Prettify</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="jsonBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Convert XML to JSON format</string>
+           </property>
+           <property name="text">
+            <string>To JSON</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="row2Layout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="compressBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Compress XML data</string>
+           </property>
+           <property name="text">
+            <string>Compress</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="decompressBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Decompress XML data</string>
+           </property>
+           <property name="text">
+            <string>Decompress</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
-     <layout class="QGridLayout" name="buttonsLayout">
-      <property name="spacing">
-       <number>12</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="verifyBtn">
-        <property name="toolTip">
-         <string>Validate XML structure</string>
-        </property>
-        <property name="text">
-         <string>✓ Verify</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="miniBtn">
-        <property name="toolTip">
-         <string>Remove whitespace and compress XML</string>
-        </property>
-        <property name="text">
-         <string>Minify</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="prettifyBtn">
-        <property name="toolTip">
-         <string>Format XML with proper indentation</string>
-        </property>
-        <property name="text">
-         <string>Prettify</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="jsonBtn">
-        <property name="toolTip">
-         <string>Convert XML to JSON format</string>
-        </property>
-        <property name="text">
-         <string>To JSON</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QPushButton" name="compressBtn">
-        <property name="toolTip">
-         <string>Compress XML data</string>
-        </property>
-        <property name="text">
-         <string>Compress</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" colspan="2">
-       <widget class="QPushButton" name="decompressBtn">
-        <property name="toolTip">
-         <string>Decompress XML data</string>
-        </property>
-        <property name="text">
-         <string>Decompress</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLabel" name="editorLabel">
+     <widget class="QGroupBox" name="networkGroup">
       <property name="styleSheet">
-       <string notr="true">font-weight: 600; font-size: 11.5pt; color: #e2e8f0; padding: 4px;</string>
+       <string notr="true">QGroupBox {
+    border: 1.5px solid #334155;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+    background-color: #0f172a;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0 8px;
+    color: #94a3b8;
+}</string>
       </property>
-      <property name="text">
-       <string>Editor</string>
+      <property name="title">
+       <string>Network Analysis</string>
       </property>
+      <layout class="QVBoxLayout" name="networkLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="networkButtonsLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="drawBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Draw Graph</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="mostActiveBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Most Active</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="mostInfluencerBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Most Influencer</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="suggestLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="mutualLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>User IDs:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="idsInput">
+           <property name="placeholderText">
+            <string>Comma-separated (for mutual followers)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="mutualBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Find Mutual</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="suggestLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>User ID:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="idInput">
+           <property name="placeholderText">
+            <string>For Suggest Followers</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="suggestBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Suggest</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="wordSearchLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="wordLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Keyword</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="wordInput">
+           <property name="placeholderText">
+            <string>Search in posts</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="searchTopicBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Search by topic</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="searchWordBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Search by word</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>

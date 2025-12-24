@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#include "cli.h"
+#include "CLI.h"
 #include "CheckXmlFile.h"
 #include "CompressingXML.h"
 #include "DecompressingXML.h"
@@ -8,16 +8,26 @@
 #include "XMLtoTree.h"
 #include "XMLtoJSON.h"
 #include "PrettifyingXMLFile.h"
+#include "Network_JPG.h"
+#include "NetworkBuilder.h"
+#include "NetworkAnalysis.h"
+#include "PostSearch.h"
 
 using namespace std;
 
 string readFile(const string &path)
 {
     ifstream file(path);
+    if (!file.is_open())
+    {
+        cerr << "Error: file not found or cannot be opened -> " << path << endl;
+        return "";
+    }
     stringstream buffer;
     buffer << file.rdbuf();
     return buffer.str();
 }
+
 static string readFileBinary(const string &path)
 {
     ifstream file(path, ios::in | ios::binary);
@@ -52,22 +62,32 @@ static void printUsage()
 {
     cout <<
         R"(Usage:
-  .\xml_editor verify     -i <input.xml> [-o <report.txt>]
-  .\xml_editor format     -i <input.xml> -o <formatted.xml>
-  .\xml_editor mini       -i <input.xml> -o <mini.xml>
-  .\xml_editor json       -i <input.xml> -o <output.json>
-  .\xml_editor compress   -i <input.xml> -o <out.comp>
-  .\xml_editor decompress -i <in.comp>   -o <restored.xml>
-
+  .\xml_editor verify             -i <input.xml> [-o <report.txt>]          Checks XML consistency & reports errors
+  .\xml_editor verify             -i <input.xml> -f -o <fixed.xml>          Repairs mismatched/missing tags
+  .\xml_editor format             -i <input.xml> -o <formatted.xml>         Beautifies XML with indentation
+  .\xml_editor mini               -i <input.xml> -o <mini.xml>              Removes whitespace to reduce size
+  .\xml_editor json               -i <input.xml> -o <output.json>           Converts XML → JSON
+  .\xml_editor compress           -i <input.xml> -o <out.comp>              Custom compression (BPE-like)
+  .\xml_editor decompress         -i <in.comp> -o <restored.xml>            Restores full XML
+  .\xml_editor draw               -i <input.xml> -o <graph.jpg>             Builds network graph from users/followers
+  .\xml_editor most_active        -i <input.xml>                            Prints user with most outgoing connections
+  .\xml_editor most_influencer    -i <input.xml>                            Prints user with most followers
+  .\xml_editor mutual             -i <input.xml> -ids <id1,id2,...>         Prints common followers
+  .\xml_editor suggest            -i <input.xml> -id <user_id>              Recommended users to follow
+  .\xml_editor search -w <word>   -i <input.xml>                            Writes a list of posts where the word was mentioned
+  .\xml_editor search -t <topic>  -i <input.xml>                            Writes a list of posts where the topic was mentioned
 )";
 }
 
-// ----------------- args parsing -----------------
 struct Args
 {
     string cmd;
     string inPath;
-    string outPath; // optional for verify
+    string outPath;
+    string word;
+    string topic;
+    int id = -1;
+    vector<int> ids;
 };
 
 static Args parseArgs(int argc, char **argv)
@@ -94,6 +114,26 @@ static Args parseArgs(int argc, char **argv)
         {
             a.outPath = argv[++i];
         }
+        else if (tok == "-w" && i + 1 < argc)
+        {
+            a.word = argv[++i];
+        }
+        else if (tok == "-t" && i + 1 < argc) // <-- handle topic
+        {
+            a.topic = argv[++i];
+        }
+        else if (tok == "-id" && i + 1 < argc)
+        {
+            a.id = stoi(argv[++i]);
+        }
+        else if (tok == "-ids" && i + 1 < argc)
+        {
+            string s = argv[++i];
+            stringstream ss(s);
+            string x;
+            while (getline(ss, x, ','))
+                a.ids.push_back(stoi(x));
+        }
         else
         {
             throw runtime_error("Unknown argument: " + tok);
@@ -102,7 +142,9 @@ static Args parseArgs(int argc, char **argv)
 
     if (a.inPath.empty())
         throw runtime_error("Missing -i <input>.");
-    if (a.cmd != "verify" && a.outPath.empty())
+    if ((a.cmd == "format" || a.cmd == "mini" || a.cmd == "json" ||
+         a.cmd == "compress" || a.cmd == "decompress" || a.cmd == "draw") &&
+        a.outPath.empty())
         throw runtime_error("Missing -o <output> for command: " + a.cmd);
 
     return a;
@@ -229,7 +271,7 @@ int run_cli(int argc, char **argv)
         if (args.cmd == "mini")
         {
             string xml = readFile(args.inPath);
-            string mini = Minifyingxmlfile(xml); // requires string&
+            string mini = Minifyingxmlfile(xml);
             writeFileText(args.outPath, mini);
             return 0;
         }
@@ -244,11 +286,11 @@ int run_cli(int argc, char **argv)
             return 0;
         }
 
-           // prettify
-        if (args.cmd == "prettify")
+        // prettify
+        if (args.cmd == "format")
         {
             string xml = readFile(args.inPath);
-            string p=PrettifyingXMLFile(xml);
+            string p = PrettifyingXMLFile(xml);
             writeFileText(args.outPath, p);
             return 0;
         }
@@ -328,6 +370,70 @@ int run_cli(int argc, char **argv)
             string restored = DecompressingXMLFile(comp, dict);
 
             writeFileText(args.outPath, restored);
+            return 0;
+        }
+
+        if (args.cmd == "draw")
+        {
+            Network_JPG(XMLtoGraph(readFile(args.inPath)));
+            cout << "Network graph generated as network.jpg\n";
+            return 0;
+        }
+        if (args.cmd == "most_active")
+        {
+            auto MostActive = mostActiveUser(
+                XMLtoGraph(readFile(args.inPath)),
+                addusers(readFile(args.inPath)));
+            cout << "Most Active User\n";
+            cout << "ID: " << MostActive.first << endl;
+            cout << "Name: " << MostActive.second << endl;
+            return 0;
+        }
+        if (args.cmd == "most_influencer")
+        {
+            cout << mostInfluencer(
+                        XMLtoGraph(readFile(args.inPath)),
+                        addusers(readFile(args.inPath)))
+                 << "\n";
+            return 0;
+        }
+        if (args.cmd == "mutual")
+        {
+            if (args.ids.size() < 2)
+                throw runtime_error("mutual requires -ids id1,id2");
+
+            cout << mutualUsers(args.ids[0], args.ids[1],
+                                XMLtoGraph(readFile(args.inPath)))
+                 << "\n";
+            return 0;
+        }
+        if (args.cmd == "suggest")
+        {
+            if (args.id == -1)
+                throw runtime_error("suggest requires -id");
+
+            cout << suggestUser(args.id,
+                                XMLtoGraph(readFile(args.inPath)))
+                 << "\n";
+            return 0;
+        }
+        if (args.cmd == "search")
+        {
+            if (args.word.empty() && args.topic.empty())
+                throw runtime_error("search requires -w <word> or -t <topic>");
+
+            string results;
+            string xml = readFile(args.inPath);
+            if (!args.word.empty())
+            {
+                results = PostSearchWord(xml, args.word);
+            }
+            else if (!args.topic.empty())
+            {
+                results = PostSearchTopic(xml, args.topic);
+            }
+
+            cout << results << "\n";
             return 0;
         }
 

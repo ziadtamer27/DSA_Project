@@ -1,26 +1,6 @@
 #include "NetworkBuilder.h"
 
-class User {
-public:
-    string name;
-    int id;
-    User(string n, int id){
-        name = n;
-        this->id = id;
-    }
-    void setName(string n) {
-        name = n;
-    }
-    void setId(int id) {
-        this->id = id;
-    }
-    string getName() {
-        return name;
-    }
-    int getId() {
-        return id;
-    }
-};
+
 vector<User> addusers(string xmlfile){
     vector<User> users;
     for(int i=0;i<xmlfile.size();i++){
@@ -32,6 +12,7 @@ vector<User> addusers(string xmlfile){
                 i++;
             }
             if(tag=="user"){
+                bool flag=1;
                 string name="", id="";
                 while(true){
                     i++;
@@ -49,12 +30,13 @@ vector<User> addusers(string xmlfile){
                                 i++;
                             }
                         }
-                        else if(innerTag=="id"){
+                        else if(innerTag=="id" && flag){
                             i++;
                             while(xmlfile[i]!='<'){
                                 id+=xmlfile[i];
                                 i++;
                             }
+                            flag=0;
                         }
                         else if(innerTag=="/user"){
                             break;
@@ -68,7 +50,8 @@ vector<User> addusers(string xmlfile){
     }
     return users;
 }
-vector<pair<int,vector<int>>> NetworkBuilder(string xmlfile) {
+
+vector<pair<int,vector<int>>> XMLtoGraph(string xmlfile) {
     vector<pair<int,vector<int>>> connections;
     for(int i=0;i<xmlfile.size();i++){
         if(xmlfile[i]=='<'){
@@ -133,3 +116,4 @@ vector<pair<int,vector<int>>> NetworkBuilder(string xmlfile) {
     }
     return connections;
 }
+
