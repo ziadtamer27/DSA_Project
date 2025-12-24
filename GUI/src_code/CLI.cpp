@@ -23,6 +23,7 @@ string readFile(const string &path)
         cerr << "Error: file not found or cannot be opened -> " << path << endl;
         return "";
     }
+
     stringstream buffer;
     buffer << file.rdbuf();
     return buffer.str();
