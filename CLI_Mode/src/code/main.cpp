@@ -8,13 +8,13 @@ int main(int argc, char** argv) {
     cout << suggestUser(2,XMLtoGraph(xml)) << endl;
     //return run_cli(argc, argv);
 
-auto graph = XMLtoGraph(xml);
-auto users = addusers(xml);
+    auto graph = XMLtoGraph(xml);
+    auto users = addusers(xml);
 
-auto MostActive = mostActiveUser(graph, users);
+    auto MostActive = mostActiveUser(graph, users);
 
-cout << "Most Active User\n";
-cout << "ID: " << MostActive.first << endl;
-cout << "Name: " << MostActive.second << endl;
+    cout << "Most Active User\n";
+    cout << "ID: " << MostActive.first << endl;
+    cout << "Name: " << MostActive.second << endl;
 
 }

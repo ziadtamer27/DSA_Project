@@ -3,42 +3,44 @@
 
 
 string suggestUser(int userid, vector<pair<int,vector<int>>> connections) {
-    vector<int> userFollowers;
-    for (const auto& conn : connections) {
-        if (conn.first == userid) {
-            userFollowers = conn.second;
-            break;
+    unordered_map<int, unordered_set<int>> graph;
+
+    // Build graph
+    for (auto &c : connections) {
+        graph[c.first] = unordered_set<int>(c.second.begin(), c.second.end());
+    }
+
+    if (graph.find(userid) == graph.end())
+        return "No suggestions available";
+
+    auto &userFollowers = graph[userid];
+    unordered_set<int> suggestions;
+
+    // Friends of friends
+    for (int follower : userFollowers) {
+        if (graph.find(follower) == graph.end()) continue;
+
+        for (int fof : graph[follower]) {
+            if (fof != userid && userFollowers.find(fof) == userFollowers.end()) {
+                suggestions.insert(fof);
+            }
         }
     }
 
-    vector<int> fof;
-    for (int follower : userFollowers) {
-        for (const auto& conn : connections) {
-            if (conn.first == follower) {
-                for (int fofUser : conn.second) {
-                    if (fofUser != userid && 
-                        find(userFollowers.begin(), userFollowers.end(), fofUser) == userFollowers.end()
-                        && find(fof.begin(), fof.end(), fofUser) == fof.end()) {
-                        fof.push_back(fofUser);
-                    }
-                }
-                break;
-            }
-        }
-    }
-    if (fof.empty()) {
+    if (suggestions.empty())
         return "No suggestions available";
-    }else{
-        string suggestion = "Suggested users for user " + to_string(userid) + ": ";
-        for (size_t i = 0; i < fof.size(); ++i) {
-            suggestion += to_string(fof[i]);
-            if (i != fof.size() - 1) {
-                suggestion += ", ";
-            }
-        }
-        return suggestion;
+
+    string result = "Suggested users for user " + to_string(userid) + ": ";
+    bool first = true;
+    for (int u : suggestions) {
+        if (!first) result += ", ";
+        result += to_string(u);
+        first = false;
     }
+
+    return result;
 }
+
 
 string mutualUsers(int user1, int user2, vector<pair<int, vector<int>>> connections) {
     vector<int> followers1, followers2;
