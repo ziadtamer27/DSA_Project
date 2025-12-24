@@ -1,3 +1,13 @@
+#include <bits/stdc++.h>
+
+#include "..\\header\\CheckXmlFile.h"
+#include "..\\header\\CompressingXML.h"
+#include "..\\header\\DecompressingXML.h"
+#include "..\\header\\MinifyingXMLFile.h"
+#include "..\\header\\XMLtoTree.h"
+#include "..\\header\\XMLtoJSON.h"
+#include "..\\header\\PrettifyingXMLFile.h"
+#include "..\\header\\Network_JPG.h"
 #include "..\\header\\CLI.h"
 
 using namespace std;
