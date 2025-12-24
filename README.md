@@ -19,7 +19,6 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 ├── README.md
 │
 ├── CLI_mode
-│   ├── xml_editor.exe
 │   ├── inputXMLfiles
 │   │   └── sample.xml
 │   ├── outputfiles
@@ -31,34 +30,7 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 │       └── header
 │
 └── GUI
-    ├── Release
-    │   └── xml_editor_gui.exe
     └── src_code
-```
-
----
-
-## 🚀 **How to Run**
-
-### 🔹 GUI Mode (Recommended)
-
-✔ **No build required**
-✔ **No Qt installation needed**
-
-Just run:
-
-```
-GUI/Release/xml_editor_gui.exe
-```
-
----
-
-### 🔹 CLI Mode
-
-Run the executable from `CLI_mode`:
-
-```bash
-xml_editor.exe <command> [options]
 ```
 
 ---
