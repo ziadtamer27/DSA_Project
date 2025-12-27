@@ -7,7 +7,7 @@ The project supports **CLI mode** and a **ready-to-run GUI mode** (no Qt install
 
 ### GUI Screenshot
 
-<img width="1371" height="1012" alt="Screenshot 2025-12-22 175129" src="https://github.com/user-attachments/assets/cd9e0746-5991-4117-a7d3-f3a833a0d505" />
+<img width="1453" height="1079" alt="Screenshot 2025-12-24 193829" src="https://github.com/user-attachments/assets/076adb60-edd6-4fcd-a113-169876f712e7" />
 
 
 ---
